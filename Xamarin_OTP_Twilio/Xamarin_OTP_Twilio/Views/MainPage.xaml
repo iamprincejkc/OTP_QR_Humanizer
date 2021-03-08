@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamarin_OTP_Twilio.Views.MainPage"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:view="clr-namespace:Xamarin_OTP_Twilio.ViewModels"
+             xmlns:sh="http://sharpnado.com"
+             xmlns:helpers="clr-namespace:FoodOrderApp.Helpers"
+             BackgroundColor="{DynamicResource Background}"
+             Title="{Binding Title}">
+
+    <RefreshView IsRefreshing="{Binding IsRefreshing}" RefreshColor="{DynamicResource Primary}"  Command="{Binding RefreshViewCommand}" >
+        <Grid>
+            <ScrollView>
+            <pv:PancakeView CornerRadius="60,60,0,0" Margin="0,40,0,0" Padding="10,10" BackgroundColor="{DynamicResource Surface1}" HasShadow="False">
+                <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" RowDefinitions="auto,auto,auto,auto,auto,auto,auto">
+                    
+                    <Picker Title="Select a Country" Grid.Row="0" ItemsSource="{Binding Countries}" ItemDisplayBinding="{Binding name}" HorizontalTextAlignment="Center" SelectedItem="{Binding SelectedCountries,Mode=TwoWay}" TextColor="{DynamicResource OnBg2}" TitleColor="{DynamicResource OnBg3}"/>
+
+                    <StackLayout Orientation="Horizontal" Grid.Row="1">
+                        <Label Text="Phone Number: " VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" TextColor="{DynamicResource OnBg2}"/>
+                        <Label Text="{Binding SelectedCountries.dial_code}" HorizontalOptions="Center"  VerticalOptions="Center" TextColor="{DynamicResource OnBg2}" FontSize="Medium" />
+                        <Entry Keyboard="Telephone"  Placeholder="Enter Phone Number" HorizontalTextAlignment="Center"  HorizontalOptions="CenterAndExpand" Text="{Binding Telephone}" MaxLength="10" VerticalOptions="Center" TextColor="{DynamicResource OnBg2}"  PlaceholderColor="{DynamicResource OnBg3}"/>
+                    </StackLayout>
+                    <Label  Grid.Row="2">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Resend OTP"  TextColor="{DynamicResource Primary}" TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ResendOTPCommand}"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Button Text="Send OTP" BorderWidth="1" HorizontalOptions="CenterAndExpand" BorderColor="{DynamicResource Primary}" BackgroundColor="{DynamicResource Surface1}"  Grid.Row="3" TextColor="{DynamicResource OnBg2}" Command="{Binding SendOTPCommand}" CornerRadius="10">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{DynamicResource Surface1}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
+                    <StackLayout Orientation="Horizontal" Grid.Row="4">
+                        <Label Text="OTP: "  VerticalOptions="Center" HorizontalOptions="EndAndExpand" TextColor="{DynamicResource OnBg2}" FontSize="Medium"/>
+                        <Entry Keyboard="Numeric" Placeholder="Enter OTP" HorizontalTextAlignment="Center" HorizontalOptions="StartAndExpand" PlaceholderColor="{DynamicResource OnBg3}" TextColor="{DynamicResource OnBg2}" Text="{Binding Otp}" MaxLength="5"  VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Button Text="Verify" BorderWidth="1" HorizontalOptions="CenterAndExpand" BorderColor="{DynamicResource Primary}" TextColor="{DynamicResource OnBg2}" Grid.Row="5" Command="{Binding VerifyOTPCommand}" CornerRadius="10">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{DynamicResource Surface1}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
+
+
+
+                    <StackLayout HorizontalOptions="Center" Grid.Row="6" VerticalOptions="Center">
+                        <Switch IsToggled="{Binding IsToggled}" OnColor="{DynamicResource OnBg1}" ThumbColor="{DynamicResource Secondary}">
+                            <Switch.Behaviors>
+                                <prism:EventToCommandBehavior EventName="Toggled"  Command="{Binding ToggleCommand}"/>
+                            </Switch.Behaviors>
+                        </Switch>
+                    </StackLayout>
+                
+                </Grid>
+            </pv:PancakeView>
+        </ScrollView>
+
+
+            <!--Loading Indicator-->
+            <ContentView IsVisible="{Binding BusyIndicator}" BackgroundColor="{DynamicResource Background}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Image Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static helpers:IconFont.Github},Size=45,Color={StaticResource PrimaryVariant}}"/>
+                    <Label Text="Loading" 
+                           Style="{Binding LabelStyle}" 
+                           VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="CenterAndExpand" />
+                    <ActivityIndicator Color="{DynamicResource SecondaryVariant}" 
+                                       Grid.Row="0"
+                                               IsRunning="{Binding BusyIndicator}"
+                                               IsEnabled="{Binding BusyIndicator}"  
+                                               IsVisible="{Binding BusyIndicator}"  
+                                               VerticalOptions="CenterAndExpand" 
+                                               HorizontalOptions="CenterAndExpand"
+                                               BackgroundColor="Transparent" />
+                </StackLayout>
+            </ContentView>
+            
+            
+        </Grid>
+    </RefreshView>
+</ContentPage>

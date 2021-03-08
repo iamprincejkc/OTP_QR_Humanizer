@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="http://prismlibrary.com"
+            xmlns:local="clr-namespace:Xamarin_OTP_Twilio.Views"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            NavigationPage.HasNavigationBar="false"
+            xmlns:helpers="clr-namespace:FoodOrderApp.Helpers"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.BarItemColor="{DynamicResource BarItemBackground}"
+            android:TabbedPage.BarSelectedItemColor="{DynamicResource Secondary}"
+            BarBackgroundColor="{DynamicResource BarBackground}"
+            BackgroundColor="{DynamicResource Surface1}"
+            x:Class="Xamarin_OTP_Twilio.Views.PrismTabbedPage1">
+    <TabbedPage.Children>
+        <local:TestPage1 Title="Converter" IconImageSource="{FontImage FontFamily=FontAwesome, Glyph={x:Static helpers:IconFont.Xamarin},Size=50,Color={StaticResource SecondaryVariant}}"/>
+        <local:TestPage2 Title="Qr Code" IconImageSource="{FontImage FontFamily=FontAwesome, Glyph={x:Static helpers:IconFont.Xamarin},Size=50,Color={StaticResource SecondaryVariant}}"/>
+        <local:TestPage3 Title="IDK" IconImageSource="{FontImage FontFamily=FontAwesome, Glyph={x:Static helpers:IconFont.Xamarin},Size=50,Color={StaticResource SecondaryVariant}}"/>
+    </TabbedPage.Children>
+</TabbedPage>

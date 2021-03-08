@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:FoodOrderApp.Helpers"
+             xmlns:prism="http://prismlibrary.com"
+             x:Class="Xamarin_OTP_Twilio.App">
+  <Application.Resources>
+
+        <ResourceDictionary Source="Helpers\LightTheme.xaml">
+        </ResourceDictionary>
+
+        <ResourceDictionary>
+
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Title" />
+                <Setter Property="FontFamily" Value="Roboto" />
+            </Style>
+
+
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily" Value="Roboto" />
+            </Style>
+
+            <Style x:Key="ButtonPage1Style" TargetType="Button">
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontFamily" Value="Roboto" />
+                <Setter Property="ImageSource" Value="{FontImage FontFamily=FontAwesome, Glyph={x:Static helpers:IconFont.Biohazard},Size=25,Color=Black}"/>
+            </Style>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

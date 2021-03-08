@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:sh="http://sharpnado.com"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
+             xmlns:local="clr-namespace:Xamarin_OTP_Twilio.Views"
+             xmlns:helpers="clr-namespace:FoodOrderApp.Helpers"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Xamarin_OTP_Twilio.Views.TestPage1">
+
+    <ScrollView>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10,10">
+            
+            <!--Start-->
+            <Image Source="{FontImage FontFamily=FontAwesome, Glyph={x:Static helpers:IconFont.Xamarin},Size=50,Color={StaticResource Primary}}"  Margin="0,30,0,0" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Label Text="Word/Roman Converter" Margin="0,30,0,0" Style="{DynamicResource LabelStyle}" HorizontalOptions="Center"/>
+            <Frame Padding = "0" CornerRadius="30"  IsClippedToBounds="true" BorderColor="{DynamicResource Primary}">
+                <Entry Placeholder="Enter a number" ClearButtonVisibility="WhileEditing"  HorizontalOptions="FillAndExpand"  Style="{DynamicResource EntryStyle}" Text="{Binding ToRomanText,Mode=TwoWay}" HorizontalTextAlignment="Center"  Keyboard="Numeric"/>
+            </Frame>
+            <Label Text="{Binding ToRomanOutput}" Style="{DynamicResource LabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                <Button Text="Roman" Command="{Binding ConvertToRomanCommand}"  Style="{DynamicResource ButtonPage1Style}"/>
+                <Button  Text="Word" Command="{Binding ConvertToWordCommand}" Style="{DynamicResource ButtonPage1Style}"/>
+            </StackLayout>
+            <BoxView Color="Gray" Margin="0,30,0,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+            <!--End-->
+
+            <!--Start-->
+            <Label Text="String Casing Converter" Margin="0,30,0,0" Style="{DynamicResource LabelStyle}" HorizontalOptions="Center"/>
+            <Frame Padding = "0" CornerRadius="30"  IsClippedToBounds="true" BorderColor="{DynamicResource Primary}">
+                <Entry Placeholder="Enter a string" Text="{Binding ToCasingText,Mode=TwoWay}" Style="{DynamicResource EntryStyle}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Label Text="{Binding ToCasingOutput}" Style="{DynamicResource LabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                <Button Text="Pascalize" Command="{Binding ConvertToPascalCommand}"  Style="{DynamicResource ButtonPage1Style}"/>
+                <Button Text="Camelize" Command="{Binding ConvertToCamelCommand}" Style="{DynamicResource ButtonPage1Style}"/>
+                <Button Text="Underscore" Command="{Binding ConvertToUnderscoreCommand}" Style="{DynamicResource ButtonPage1Style}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                <Button Text="Titleize"  Command="{Binding ConvertToTitleCommand}" Style="{DynamicResource ButtonPage1Style}"/>
+                <Button Text="Dasherize" Command="{Binding ConvertToDashCommand}" Style="{DynamicResource ButtonPage1Style}"/>
+                <Button Text="Kebaberize"  Command="{Binding ConvertToKebabCommand}" Style="{DynamicResource ButtonPage1Style}"/>
+            </StackLayout>
+            <BoxView Color="Gray" Margin="0,30,0,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+            <!--End-->
+
+            <!--Start-->
+            <Label Text="Pluralize/Singularize Converter" Margin="0,30,0,0" Style="{DynamicResource LabelStyle}" HorizontalOptions="Center"/>
+            <Frame Padding = "0" CornerRadius="30"  IsClippedToBounds="true" BorderColor="{DynamicResource Primary}">
+                <Entry Placeholder="Enter a string" HorizontalOptions="FillAndExpand" Style="{DynamicResource EntryStyle}" Text="{Binding ToPluralSingularText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Label Text="{Binding ToPluralSingularOutput}" Style="{DynamicResource LabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                <Button Text="Pluralize" Command="{Binding ConvertToPluralCommand}"  Style="{DynamicResource ButtonPage1Style}"/>
+                <Button Text="Singularize" Command="{Binding ConvertToSingularCommand}" Style="{DynamicResource ButtonPage1Style}"/>
+            </StackLayout>
+            <BoxView Color="Gray" Margin="0,30,0,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+            <!--End-->
+
+            <!--Start-->
+            <Label Text="Ordinal Converter" Margin="0,30,0,0" Style="{DynamicResource LabelStyle}" HorizontalOptions="Center"/>
+            <Frame Padding = "0" CornerRadius="30"  IsClippedToBounds="true" BorderColor="{DynamicResource Primary}">
+                <Entry Placeholder="Enter a string" HorizontalOptions="FillAndExpand" Style="{DynamicResource EntryStyle}" Text="{Binding ToOrdinalText,Mode=TwoWay}" HorizontalTextAlignment="Center"  Keyboard="Numeric"/>
+            </Frame>
+            <Label Text="{Binding ToOrdinalOutput}" Style="{DynamicResource LabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                <Button Text="Ordinalize"  Command="{Binding ConvertToOrdinalCommand}"  Style="{DynamicResource ButtonPage1Style}"/>
+                <Button Text="Ordinal Word" Command="{Binding ConvertToOrdinalWordCommand}" Style="{DynamicResource ButtonPage1Style}"/>
+            </StackLayout>
+            <BoxView Color="Gray" Margin="0,30,0,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+            <!--End-->
+
+            <!--Start-->
+            <Label Text="Date &amp; Time Converter" Margin="0,30,0,0" Style="{DynamicResource LabelStyle}" HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                <Frame Padding = "0" CornerRadius="30"  IsClippedToBounds="true" BorderColor="{DynamicResource Primary}">
+                    <DatePicker HorizontalOptions="Fill" Format="MMMM dd,yyyy" Date="{Binding Date}"  Style="{DynamicResource DatePickerPage1Style}" />
+                </Frame>
+                <Frame Padding = "0" CornerRadius="30"  IsClippedToBounds="true" BorderColor="{DynamicResource Primary}">
+                    <TimePicker HorizontalOptions="Fill" Time="{Binding Time}"  Style="{DynamicResource TimePickerPage1Style}"/>
+                </Frame>
+            </StackLayout>
+            <Label Text="{Binding ToDateTimeOutput}" Style="{DynamicResource LabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                <Button Text="Date" Command="{Binding ConvertToDateCommand}"  Style="{DynamicResource ButtonPage1Style}"/>
+                <Button  Text="Time" Command="{Binding ConvertToTimeCommand}" Style="{DynamicResource ButtonPage1Style}"/>
+                <Button  Text="Date &amp; Time" Command="{Binding ConvertToDateTimeCommand}" Style="{DynamicResource ButtonPage1Style}"/>
+            </StackLayout>
+            <BoxView Color="Gray" Margin="0,30,0,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+            <!--End-->
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

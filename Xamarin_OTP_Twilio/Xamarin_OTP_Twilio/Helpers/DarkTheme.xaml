@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamarin_OTP_Twilio.Helpers.DarkTheme">
+    <Color x:Key="BackgroundColor">#FF000000</Color>
+    <Color x:Key="FrameColor">#FF1f1f1f</Color>
+    <Color x:Key="TextPrimaryColor">#FFFFFF</Color>
+    <Color x:Key="TextSecondaryColor">#eFeFeF</Color>
+
+
+
+    <!--Material Light-->
+    <!--Start-->
+    <Color x:Key="Primary">#bb86fc</Color>
+    <Color x:Key="PrimaryVariant">#3700b3</Color>
+    <Color x:Key="OnPrimary">#ff000000</Color>
+    
+    <Color x:Key="Secondary">#03dac6</Color>
+    <Color x:Key="SecondaryVariant">#03dac6</Color>
+    <Color x:Key="OnSecondary">#ff000000</Color>
+
+    <Color x:Key="Background">#ff000000</Color>
+    <Color x:Key="Surface1">#ff121212</Color>
+    <Color x:Key="BarBackground">#ff1f1f1f</Color>
+    <Color x:Key="BarItemBackground">darkgray</Color>
+    <Color x:Key="Surface2">#ff303030</Color>
+    <Color x:Key="OnBg1">#ffffffff</Color>
+    <Color x:Key="OnBg2">#deffffff</Color>
+    <Color x:Key="OnBg3">#a6ffffff</Color>
+
+
+    <Color x:Key="Error">#cf6679</Color>
+    <Color x:Key="OnError">#000000</Color>
+    <!--End-->
+
+
+
+    <Style x:Key="LabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimaryColor}"/>
+        <Setter Property="FontSize" Value="Large"/>
+    </Style>
+
+
+    <Style x:Key="EntryStyle" TargetType="Entry">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimaryColor}"/>
+        <Setter Property="FontSize" Value="Large"/>
+        <Setter Property="PlaceholderColor" Value="{StaticResource OnBg3}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Surface2}"/>
+    </Style>
+
+
+
+    <Style x:Key="ButtonPage1Style" TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource OnBg2}"/>
+        <Setter Property="BorderColor" Value="{StaticResource Primary}"/>
+        <Setter Property="BorderWidth" Value="1"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Background}"/>
+        <Setter Property="CornerRadius"  Value="20"/>
+    </Style>
+
+
+    <Style x:Key="DatePickerPage1Style" TargetType="DatePicker">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimaryColor}"/>
+        <Setter Property="FontSize" Value="Large"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Surface2}"/>
+    </Style>
+
+
+    <Style x:Key="TimePickerPage1Style" TargetType="TimePicker">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimaryColor}"/>
+        <Setter Property="FontSize" Value="Large"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Surface2}"/>
+    </Style>
+    
+    
+</ResourceDictionary>
